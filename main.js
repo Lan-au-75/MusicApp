@@ -189,13 +189,13 @@ const app = {
       audio.currentTime = seek;
     });
 
-    // Lắng nghe thay đổi khi tua song seek on Mobile
-    progress.addEventListener('input', function (e) {
-      audio.addEventListener('timeupdate', timeUpdate);
+    // // Lắng nghe thay đổi khi tua song seek on Mobile
+    // progress.addEventListener('input', function (e) {
+    //   audio.addEventListener('timeupdate', timeUpdate);
 
-      const seek = Math.floor((audio.duration / 100) * e.target.value);
-      audio.currentTime = seek;
-    });
+    //   const seek = Math.floor((audio.duration / 100) * e.target.value);
+    //   audio.currentTime = seek;
+    // });
 
     // chuyển song khi next
     nextSong.addEventListener('click', function (e) {
