@@ -311,7 +311,7 @@ const app = {
     } while (array.includes(newIndex));
 
     this.currentIndex = newIndex;
-    this.hasPlayedSong();
+    this.hasSongPlayed();
 
     // console.log('array:' + array, this.currentIndex);
     // [0,1,2,3,4,5,6,7] -> da phat
@@ -320,7 +320,7 @@ const app = {
     this.loadCurrentSong();
   },
 
-  hasPlayedSong() {
+  hasSongPlayed() {
     if (array.length < this.songs.length - 1) {
       array.push(this.currentIndex);
     } else {
