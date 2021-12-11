@@ -322,7 +322,7 @@ const app = {
 
     this.currentIndex = newIndex;
 
-    console.log('array:' + array, this.currentIndex);
+    // console.log('array:' + array, this.currentIndex);
     // [0,1,2,3,4,5,6,7] -> da phat
     // phat lai sao cho ko trung voi index da phat
 
