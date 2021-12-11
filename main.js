@@ -30,6 +30,8 @@ const btnRandom = $('.btn-random');
 const btnRepeat = $('.btn-repeat');
 const playList = $('.playlist');
 
+let array = [];
+
 const app = {
   currentIndex: 0,
   isPlaying: false,
@@ -304,29 +306,29 @@ const app = {
 
   playRandomSong() {
     let newIndex;
-    let array = [];
-
-    // Xử lý ko trùng bài hát
-    if (array.length < this.songs.length) {
-      array.push(this.currentIndex);
-    } else {
-      array = [this.currentIndex, newIndex];
-    }
-
     do {
       newIndex = Math.floor(Math.random() * this.songs.length);
-    } while (
-      this.currentIndex === newIndex &&
-      array.includes(this.currentIndex)
-    );
+    } while (array.includes(newIndex));
 
     this.currentIndex = newIndex;
+    this.hasPlayedSong();
 
     // console.log('array:' + array, this.currentIndex);
     // [0,1,2,3,4,5,6,7] -> da phat
     // phat lai sao cho ko trung voi index da phat
 
     this.loadCurrentSong();
+  },
+
+  hasPlayedSong() {
+    if (array.length < this.songs.length - 1) {
+      array.push(this.currentIndex);
+    } else {
+      array = [];
+      array.push(this.currentIndex);
+    }
+
+    console.log(array);
   },
 
   loadCurrentSong() {
