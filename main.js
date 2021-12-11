@@ -305,23 +305,24 @@ const app = {
   playRandomSong() {
     let newIndex;
     let array = [];
-    do {
-      newIndex = Math.floor(Math.random() * this.songs.length);
-    } while (this.currentIndex === newIndex);
-
-    this.currentIndex = newIndex;
 
     // Xử lý ko trùng bài hát
     if (array.length < this.songs.length) {
       array.push(this.currentIndex);
+    } else {
+      array = [this.currentIndex, newIndex];
     }
 
-    // Xóa index trong mảng
-    if (array.includes(this.currentIndex)) {
-      array.pop(this.currentIndex);
-    }
+    do {
+      newIndex = Math.floor(Math.random() * this.songs.length);
+    } while (
+      this.currentIndex === newIndex &&
+      array.includes(this.currentIndex)
+    );
 
-    // console.log('array:' + array, this.currentIndex);
+    this.currentIndex = newIndex;
+
+    console.log('array:' + array, this.currentIndex);
     // [0,1,2,3,4,5,6,7] -> da phat
     // phat lai sao cho ko trung voi index da phat
 
