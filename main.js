@@ -30,13 +30,12 @@ const btnRandom = $('.btn-random');
 const btnRepeat = $('.btn-repeat');
 const playList = $('.playlist');
 
-let array = [];
-
 const app = {
   currentIndex: 0,
   isPlaying: false,
   isRandom: false,
   isRepeat: false,
+  array: [],
 
   // Lấy ra local storage
   config: JSON.parse(localStorage.getItem(PLAYER_STORE_KEY)) || {},
@@ -308,7 +307,10 @@ const app = {
     let newIndex;
     do {
       newIndex = Math.floor(Math.random() * this.songs.length);
-    } while (array.includes(newIndex) && array.length < this.songs.length);
+    } while (
+      this.array.includes(newIndex) &&
+      this.array.length < this.songs.length
+    );
 
     this.currentIndex = newIndex;
     this.hasSongPlayed();
@@ -321,14 +323,14 @@ const app = {
   },
 
   hasSongPlayed() {
-    if (array.length < this.songs.length) {
-      array.push(this.currentIndex);
+    if (this.array.length < this.songs.length) {
+      this.array.push(this.currentIndex);
     } else {
-      array = [];
-      array.push(this.currentIndex);
+      this.array = [];
+      this.array.push(this.currentIndex);
     }
 
-    // console.log(array);
+    // console.log(this.array);
   },
 
   loadCurrentSong() {
