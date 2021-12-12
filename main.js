@@ -308,7 +308,7 @@ const app = {
     let newIndex;
     do {
       newIndex = Math.floor(Math.random() * this.songs.length);
-    } while (array.includes(newIndex));
+    } while (array.includes(newIndex) && array.length < this.songs.length);
 
     this.currentIndex = newIndex;
     this.hasSongPlayed();
@@ -321,14 +321,14 @@ const app = {
   },
 
   hasSongPlayed() {
-    if (array.length < this.songs.length - 1) {
+    if (array.length < this.songs.length) {
       array.push(this.currentIndex);
     } else {
       array = [];
       array.push(this.currentIndex);
     }
 
-    // console.log(array);
+    console.log(array);
   },
 
   loadCurrentSong() {
