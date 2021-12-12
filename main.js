@@ -328,7 +328,7 @@ const app = {
       array.push(this.currentIndex);
     }
 
-    console.log(array);
+    // console.log(array);
   },
 
   loadCurrentSong() {
